@@ -12,6 +12,13 @@ pipeline {
                     }
                 }
             } 
+                stage('Maven Build : maven'){
+                    steps{
+                       script{
+                              mvnBuild.mvnBuild()
+               }
+            }
+        }
                  stage('Unit Tests') {
                     steps {
                         script {
@@ -31,13 +38,6 @@ pipeline {
                        script{
                             def SonarQubecredentialsId = 'SONAR'
                            SonarqubeAnalyses(SonarQubecredentialsId)
-               }
-            }
-        }
-                 stage('Maven Build : maven'){
-                    steps{
-                       script{
-                              mvnBuild.mvnBuild()
                }
             }
         }
