@@ -26,37 +26,37 @@ pipeline {
                 }
             }
         }
-        /*      stage('Static code analysis: Sonarqube'){
-                    steps{
-                       script{
-                            def SonarQubecredentialsId = 'SONAR'
-                          SonarqubeAnalyses(SonarQubecredentialsId)
-               }
-            }
-        }
-                 stage('Maven Build : maven'){
-                    steps{
-                       script{
-                              mvnBuild.mvnBuild()
-               }
-            }
-        }
-                stage('Build Docker Image') {
-                    steps {
-                       script {
-                            DOCKER_IMAGE_NAME = buildDockerImage('java-app')
-                            echo "Built Docker image: ${DOCKER_IMAGE_NAME}"
-                }
-            }
-        }
-               stage('Vulnerability Scan - Docker Trivy') {
-       steps {
-         withCredentials([string(credentialsId: 'trivy_github_token', variable: 'TOKEN')]) {
-  sh "sed -i 's#token_github#${TOKEN}#g' trivy-image-scan.sh"      
-  sh "sudo bash trivy-image-scan.sh"
-        }
-       }
-     }
-    }
-}
-*/
+        //      stage('Static code analysis: Sonarqube'){
+        //            steps{
+         //              script{
+         //                   def SonarQubecredentialsId = 'SONAR'
+          //                SonarqubeAnalyses(SonarQubecredentialsId)
+         //      }
+        //    }
+      //  }
+        //         stage('Maven Build : maven'){
+         //           steps{
+        //               script{
+        //                      mvnBuild.mvnBuild()
+       //        }
+        //    }
+       // }
+        //        stage('Build Docker Image') {
+        //            steps {
+        //               script {
+        //                    DOCKER_IMAGE_NAME = buildDockerImage('java-app')
+        //                    echo "Built Docker image: ${DOCKER_IMAGE_NAME}"
+        //        }
+         //   }
+      //  }
+      //         stage('Vulnerability Scan - Docker Trivy') {
+     //  steps {
+     //    withCredentials([string(credentialsId: 'trivy_github_token', variable: 'TOKEN')]) {
+  //sh "sed -i 's#token_github#${TOKEN}#g' trivy-image-scan.sh"      
+ // sh "sudo bash trivy-image-scan.sh"
+   //     }
+    //   }
+    // }
+   // }
+//}
+
