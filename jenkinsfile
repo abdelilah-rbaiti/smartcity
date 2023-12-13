@@ -6,6 +6,6 @@ pipeline {
         checkout scm
         sh 'echo "Checkout passed successfully"'
       }
-
     }
-
+}
+}
