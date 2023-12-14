@@ -7,16 +7,17 @@ pipeline {
         sh 'echo "Checkout passed successfully"'
       }
     }
-    stage('Scan for Secrets') {
+    stage('Decrypt Sensitive Files') {
             steps {
                 script {
-                    // Assuming GitSecrets is in your system PATH
-                    sh 'git secrets --scan -r'
+                    // Initialize BlackBox
+                    sh 'blackbox_initialize'
+
+                    // Decrypt sensitive files
+                    sh 'blackbox_decrypt_all_files'
                 }
             }
         }
-                
-            
         
   }
 }
