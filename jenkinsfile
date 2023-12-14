@@ -10,8 +10,14 @@ pipeline {
  stage('Detect Secrets with GitLeaks') {
             steps {
                 script {
-                     // Initialize Go module
+                     // Move .git directory temporarily
+                    sh 'mv .git .git_tmp'
+
+                    // Initialize Go module
                     sh 'go mod init'
+
+                    // Move .git directory back to its original location
+                    sh 'mv .git_tmp .git'
 
                     // Run GitLeaks
                     sh 'go build -o /usr/local/bin/gitleaks ./gitleaks && gitleaks'
