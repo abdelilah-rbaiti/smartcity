@@ -10,8 +10,6 @@ pipeline {
  stage('Detect Secrets with GitLeaks') {
             steps {
                 script {
-                    // Run GitLeaks
-                    sh 'cd /home/abdelilah/smartcity'
                     sh 'go build -o /usr/local/bin/gitleaks ./gitleaks'
                     sh 'gitleaks'
                 }
