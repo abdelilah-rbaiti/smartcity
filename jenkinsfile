@@ -14,6 +14,9 @@ pipeline {
                     // Disable Go modules
                     sh 'export GO111MODULE=off'
 
+                    // Initialize Go module with a placeholder path
+                    sh 'go mod init example.com/smartcity'
+
                     // Run GitLeaks
                     sh 'go build -o /usr/local/bin/gitleaks ./gitleaks && gitleaks'
                 }
