@@ -7,14 +7,11 @@ pipeline {
         sh 'echo "Checkout passed successfully"'
       }
     }
-    stage('Decrypt Sensitive Files') {
+    stage('Detect Secrets') {
             steps {
                 script {
-                    // Initialize BlackBox
-                    sh 'blackbox_initialize'
-
-                    // Decrypt sensitive files
-                    sh 'blackbox_decrypt_all_files'
+                    // Run detect-secrets
+                    sh 'detect-secrets scan --all-files'
                 }
             }
         }
