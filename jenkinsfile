@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
  
-                         // Disable Go modules
+                    // Disable Go modules
                     sh 'export GO111MODULE=off'
 
                     // Initialize Go module with a placeholder path
