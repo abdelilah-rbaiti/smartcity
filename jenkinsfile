@@ -7,11 +7,19 @@ pipeline {
         sh 'echo "Checkout passed successfully"'
       }
     }
-    stage('Detect Secrets') {
-            steps {
-                script {
-                    // Run detect-secrets
-            sh '/home/abdelilah/.local/bin/detect-secrets scan --all-files'
+ stage('Detect Secrets') {
+    steps {
+        script {
+            // Specify the full path to detect-secrets executable
+            def detectSecretsPath = '/home/abdelilah/.local/bin/detect-secrets'
+
+            // Add execute permission if the file exists
+            if (fileExists(detectSecretsPath)) {
+                sh "chmod +x ${detectSecretsPath}"
+                sh "${detectSecretsPath} scan --all-files"
+            } else {
+                echo "Error: detect-secrets executable not found at ${detectSecretsPath}"
+            }
                 }
             }
         }
