@@ -11,14 +11,12 @@ pipeline {
             steps {
                 script {
  
-                    // Disable Go modules
+                          // Disable Go modules
                     sh 'export GO111MODULE=off'
-
-            
-
                     // Run GitLeaks within the project directory
-                    dir("${WORKSPACE}") {
-                        sh 'go build -o /usr/local/bin/gitleaks ./gitleaks && /usr/local/bin/gitleaks'
+                    dir("${WORKSPACE}/gitleaks") {
+                        sh 'go build -o /usr/local/bin/gitleaks .'
+                        sh '/usr/local/bin/gitleaks'
                 }
             }
         }
