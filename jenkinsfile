@@ -7,14 +7,17 @@ pipeline {
         sh 'echo "Checkout passed successfully"'
       }
     }
- stage('Detect Secrets with GitLeaks') {
+    stage('Scan for Secrets') {
             steps {
                 script {
-                    sh 'cd gitleaks && go build && ssh '1805 | sudo -S mv gitleaks /usr/local/bin/'
-                    sh 'gitleaks --repo=https://github.com/abdelilah-rbaiti/smartcity.git'
+                    // Assuming GitSecrets is in your system PATH
+                    sh 'git secrets --scan -r'
                 }
             }
         }
+                
+            
+        
   }
 }
 
