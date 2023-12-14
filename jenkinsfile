@@ -10,8 +10,11 @@ pipeline {
  stage('Detect Secrets with GitLeaks') {
             steps {
                 script {
-                    sh 'go build -o /usr/local/bin/gitleaks ./gitleaks'
-                    sh 'gitleaks'
+                     // Initialize Go module
+                    sh 'go mod init'
+
+                    // Run GitLeaks
+                    sh 'go build -o /usr/local/bin/gitleaks ./gitleaks && gitleaks'
                 }
             }
         }
