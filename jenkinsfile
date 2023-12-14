@@ -10,16 +10,13 @@ pipeline {
  stage('Detect Secrets with GitLeaks') {
             steps {
                 script {
- 
-                          // Disable Go modules
-                    sh 'export GO111MODULE=off'
-                    // Run GitLeaks within the project directory
-                    dir("${WORKSPACE}/gitleaks") {
-                        sh 'go build -o /usr/local/bin/gitleaks .'
-                        sh '/usr/local/bin/gitleaks'
+
+   sh 'git clone https://github.com/zricethezav/gitleaks.git'
+                    sh 'cd gitleaks && go build && sudo mv gitleaks /usr/local/bin/'
+                    sh 'gitleaks --repo=https://github.com/example/repository.git'
                 }
             }
         }
   }
 }
-}
+
