@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Run detect-secrets
-                    sh 'detect-secrets scan --all-files'
+            sh '/home/abdelilah/.local/bin/detect-secrets scan --all-files'
                 }
             }
         }
