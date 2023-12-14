@@ -10,7 +10,7 @@ pipeline {
  stage('Detect Secrets with GitLeaks') {
             steps {
                 script {
-                    sh 'cd gitleaks && go build && sudo -S mv gitleaks /usr/local/bin/'
+                    sh 'cd gitleaks && go build && sudo mv gitleaks /usr/local/bin/'
                     sh 'gitleaks --repo=https://github.com/abdelilah-rbaiti/smartcity.git'
                 }
             }
